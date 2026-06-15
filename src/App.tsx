@@ -11,8 +11,8 @@ export default function App() {
   const [screen, setScreen] = useState<Screen>('splash')
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (data.session) {
+    supabase.auth.getSession().then((result: any) => {
+      if (result.data.session) {
         if (isSiaConnected()) {
           setScreen('app')
         } else {
@@ -22,7 +22,7 @@ export default function App() {
     })
 
     const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
+      (_event: any, session: any) => {
         if (!session) setScreen('auth')
       },
     )
@@ -53,19 +53,17 @@ export default function App() {
   }
 
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        background: '#0a0a0a',
-        color: '#fff',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontFamily: 'system-ui, sans-serif',
-        flexDirection: 'column',
-        gap: '1rem',
-      }}
-    >
+    <div style={{
+      minHeight: '100vh',
+      background: '#0a0a0a',
+      color: '#fff',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'system-ui, sans-serif',
+      flexDirection: 'column',
+      gap: '1rem',
+    }}>
       <p style={{ color: '#888' }}>✅ Signed in and storage connected.</p>
       <button
         style={{
