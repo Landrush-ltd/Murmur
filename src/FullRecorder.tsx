@@ -102,12 +102,12 @@ const recorderPrompts = [
 ];
 
 const moodTags = [
-  '=��� idea',
-  '=���G��=�ƿ vent',
-  '=��� deep thought',
-  '=��� reminder',
-  'G�� random',
-  '=�ơ diary',
+  'idea 💡',
+  'vent or rant',
+  'deep thought 🧠',
+  'reminder ⏰',
+  'random thought',
+  'diary entry',
 ];
 
 const fallbackMoodTag = 'G�� random';
