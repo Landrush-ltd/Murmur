@@ -4,3 +4,5 @@ dist
 *.local
 coverage
 .vite
+.env
+.env.local
