@@ -10,7 +10,7 @@ import {
   type Sdk,
 } from '@siafoundation/sia-storage';
 import { createBackupFile } from './backup';
-import type { VoiceMemo } from './types';
+import type { MurmurDoc } from './types';
 
 const SIA_INDEXER_URL = 'https://sia.storage';
 const SIA_APP_KEY_STORAGE_KEY = 'murmur.sia.appKey.v1';
@@ -180,16 +180,16 @@ export async function connectSia(
 }
 
 export async function uploadSiaBackup(
-  memos: VoiceMemo[],
+  docs: MurmurDoc[],
 ): Promise<SiaBackupRecord> {
   const sdk = await getConnectedSdk();
-  const backup = await createBackupFile(memos);
+  const backup = await createBackupFile(docs);
   const uploadedAt = new Date().toISOString();
   const metadata: MurmurSiaMetadata = {
     type: 'murmur-backup',
     version: 1,
     uploadedAt,
-    memoCount: memos.length,
+    memoCount: docs.length,
     size: backup.size,
   };
   const object = await sdk.upload(new PinnedObject(), backup.stream(), {

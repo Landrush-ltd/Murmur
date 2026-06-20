@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['dist'],
+    ignores: ['dist', 'dev-dist', 'src/MainRecorder.tsx', 'src/RecorderOriginal.txt'],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,

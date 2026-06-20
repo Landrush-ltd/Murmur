@@ -16,7 +16,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["vite-plugin-pwa/client"]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/MainRecorder.tsx"]
 }

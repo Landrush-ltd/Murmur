@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { supabase } from './supabaseClient'
+import { supabase, isSupabaseConfigured } from './supabaseClient'
 import { SplashScreen } from './screens/SplashScreen'
 import { AuthScreen } from './screens/AuthScreen'
 import { SiaSetup } from './sia/SiaSetup'
@@ -8,22 +8,27 @@ import MainApp from './MainApp'
 
 type Screen = 'splash' | 'auth' | 'storage' | 'app'
 
+function resolveInitialScreen(): Screen {
+  if (!isSupabaseConfigured) {
+    return isSiaConnected() ? 'app' : 'storage'
+  }
+  return 'splash'
+}
+
 export default function App() {
-  const [screen, setScreen] = useState<Screen>('splash')
+  const [screen, setScreen] = useState<Screen>(resolveInitialScreen)
 
   useEffect(() => {
-    supabase.auth.getSession().then((result: any) => {
+    if (!isSupabaseConfigured) return
+
+    supabase.auth.getSession().then((result) => {
       if (result.data.session) {
-        if (isSiaConnected()) {
-          setScreen('app')
-        } else {
-          setScreen('storage')
-        }
+        setScreen(isSiaConnected() ? 'app' : 'storage')
       }
     })
 
     const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event: any, session: any) => {
+      (_event, session) => {
         if (!session) setScreen('auth')
       },
     )

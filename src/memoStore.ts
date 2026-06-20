@@ -1,5 +1,5 @@
 import type { VoiceMemo } from './types';
-import { sortMemosByNewest } from './memoUtils';
+import { sortMemosByPinnedThenNewest } from './memoUtils';
 
 const DATABASE_NAME = 'murmur-voice-memos';
 const DATABASE_VERSION = 1;
@@ -54,14 +54,14 @@ async function withStore<T>(
 }
 
 export async function getAllMemos(): Promise<VoiceMemo[]> {
-  const memos = await withStore('readonly', (store) =>
-    store.getAll(),
-  );
+  const memos = await withStore('readonly', (store) => store.getAll());
 
-  return sortMemosByNewest(
+  return sortMemosByPinnedThenNewest(
     memos.map((memo) => ({
       ...memo,
       series: memo.series ?? '',
+      pinned: memo.pinned ?? false,
+      archived: memo.archived ?? false,
     })),
   );
 }
@@ -76,19 +76,29 @@ export async function updateMemo(
   id: string,
   updates: Pick<VoiceMemo, 'title' | 'series' | 'notes'>,
 ): Promise<VoiceMemo> {
-  const currentMemo = await withStore('readonly', (store) =>
-    store.get(id),
-  );
+  const currentMemo = await withStore('readonly', (store) => store.get(id));
 
   if (!currentMemo) {
     throw new Error('Memo not found.');
   }
 
-  const updatedMemo = {
-    ...currentMemo,
-    ...updates,
-  };
+  const updatedMemo = { ...currentMemo, ...updates };
+  await saveMemo(updatedMemo);
 
+  return updatedMemo;
+}
+
+export async function updateMemoMeta(
+  id: string,
+  updates: Partial<Pick<VoiceMemo, 'pinned' | 'archived'>>,
+): Promise<VoiceMemo> {
+  const currentMemo = await withStore('readonly', (store) => store.get(id));
+
+  if (!currentMemo) {
+    throw new Error('Memo not found.');
+  }
+
+  const updatedMemo = { ...currentMemo, ...updates };
   await saveMemo(updatedMemo);
 
   return updatedMemo;
