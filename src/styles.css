@@ -2721,7 +2721,7 @@ html, body, #root {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 10px 10px 6px;
+  padding: 10px 10px 4px;
   flex-shrink: 0;
 }
 
@@ -2782,7 +2782,7 @@ html, body, #root {
 
 /* Quick nav block */
 .ws-quick-nav {
-  padding: 0 8px 8px;
+  padding: 10px 8px 10px;
   flex-shrink: 0;
   border-bottom: 1px solid var(--border-dim);
   margin-bottom: 4px;
