@@ -2,16 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Viewport / PWA -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Murmur" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="msapplication-TileColor" content="#0a0a0a" />
+
+    <!-- SEO / Share -->
     <meta
       name="description"
-      content="Murmur is a private browser-based voice memo recorder."
+      content="Murmur – Privacy-first voice memos with auto transcription, rich notes, and optional Sia encrypted backup. Request a demo."
     />
+    <meta property="og:title" content="Murmur – Private Voice Memos" />
+    <meta
+      property="og:description"
+      content="Capture ideas by voice. Organize transcripts and notes in a calm workspace with local-first storage and encrypted Sia backup."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Murmur – Private Voice Memos" />
+
+    <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href="/murmur-mark.svg" />
-    <title>Murmur Voice Memos</title>
-    <script type="module" crossorigin src="/assets/index-B7iZE9bx.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-B-gqzq-B.css">
-  </head>
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.svg" />
+    <link rel="mask-icon" href="/murmur-mark.svg" color="#ec4899" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <title>Murmur – Private Voice Memos</title>
+    <script type="module" crossorigin src="/assets/index-BLpOdsIM.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BkvkcyTC.css">
+  <link rel="manifest" href="/manifest.webmanifest"></head>
   <body>
     <div id="root"></div>
   </body>
