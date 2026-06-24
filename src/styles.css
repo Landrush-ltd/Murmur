@@ -4120,3 +4120,61 @@ html, body, #root {
     padding: 24px;
   }
 }
+
+/* ─── Waitlist page ─────────────────────────────────────────────────────── */
+.waitlist-main {
+  position: relative;
+  z-index: 1;
+}
+
+.waitlist-hero {
+  display: grid;
+  gap: 40px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+  align-items: start;
+}
+
+.waitlist-copy h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  max-width: 14ch;
+}
+
+.waitlist-perks {
+  margin-top: 8px;
+}
+
+.waitlist-card {
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-2xl);
+  background:
+    radial-gradient(ellipse 80% 60% at 100% 0%, rgba(255, 255, 255, 0.05), transparent 60%),
+    var(--surface-1);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+}
+
+.waitlist-success {
+  min-height: 280px;
+}
+
+.waitlist-optional {
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--text-3);
+}
+
+@media (min-width: 720px) {
+  .waitlist-hero {
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    padding-top: 72px;
+    align-items: center;
+  }
+}

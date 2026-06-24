@@ -277,6 +277,7 @@ export function LandingPage() {
         </nav>
 
         <div className="landing-nav-actions">
+          <a href="/waitlist" className="landing-btn landing-btn-ghost">Join waitlist</a>
           <a href="/app" className="landing-btn landing-btn-ghost">Open app</a>
           <button type="button" className="landing-btn landing-btn-primary" onClick={() => scrollTo('demo')}>
             Request demo
@@ -414,6 +415,7 @@ export function LandingPage() {
           </a>
           <p>Private voice memos for people who think out loud.</p>
           <div className="landing-footer-links">
+            <a href="/waitlist">Join waitlist</a>
             <a href="/app">Open app</a>
             <button type="button" onClick={() => scrollTo('demo')}>Request demo</button>
           </div>
